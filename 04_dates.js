@@ -1,3 +1,5 @@
+'use strict';
+
 // `h` is an hour number between 0 and 23
 const suffixAmPm = (h) => `${h % 12 === 0 ? 12 : h % 12}${h < 12 ? 'am' : 'pm'}`;
 
@@ -17,3 +19,8 @@ diffDays(new Date('2014-12-19'), new Date('2020-01-01')); // 1839
 const isDateValid = (...val) => !Number.isNaN(new Date(...val).valueOf());
 
 console.log(isDateValid("December 17, 1995 03:24:00")); // true
+
+//
+const dayOfYear = (date) => Math.floor((date - new Date(date.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24))
+
+console.log(dayOfYear(new Date())); // 102

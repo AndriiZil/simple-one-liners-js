@@ -1,3 +1,5 @@
+'use strict';
+
 // Check if multiple objects are equal
 const isEqual = (...objects) => objects.every((obj) => JSON.stringify(objects[0]) === JSON.stringify(obj));
 

@@ -1,3 +1,5 @@
+'use strict';
+
 // Compare two arrays
 const isEqualOne = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 
@@ -43,3 +45,25 @@ const isNotEmpty = (arr) => Array.isArray(arr) && arr.length > 0;
 // Examples
 console.log(isNotEmpty([])); // false
 console.log(isNotEmpty([1, 2, 3])); // true
+
+// Remove duplicate values in an array
+
+const removeDuplicates = (arr) => [...new Set(arr)];
+
+console.log(removeDuplicates([1, 2, 2, 3, 3, 4, 4, 5])); // [ 1, 2, 3, 4, 5 ]
+
+// Flatten an array
+const flatArr = [1, 2, [3, 4], [5, [6]]];
+const flat1 = (arr) => [].concat.apply([], arr.map((a) => (Array.isArray(a) ? flat1(a) : a)))
+
+console.log(flat1(flatArr)); // [ 1, 2, 3, 4, 5, 6 ]
+console.log(flatArr.flat(Infinity)); // [ 1, 2, 3, 4, 5, 6 ]
+
+const flat2 = (arr) => arr.reduce((a, b) => (Array.isArray(b) ? [...a, ...flat2(b)] : [...a, b]), []);
+console.log(flat2(flatArr)); // [ 1, 2, 3, 4, 5, 6 ]
+
+// Remove falsy values from array
+const removeFalsy = (arr) => arr.filter(Boolean);
+
+console.log(removeFalsy([0, 'a string', '', NaN, true, 5, undefined, 'another string', false]));
+// [ 'a string', true, 5, 'another string' ]

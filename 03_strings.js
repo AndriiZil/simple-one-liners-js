@@ -1,3 +1,5 @@
+'use strict';
+
 const crypto = require('crypto');
 
 const isRelative = (path) => !/^([a-z]+:)?[\\/]/i.test(path);
@@ -31,3 +33,19 @@ const randomStr = (len = 64) => crypto.randomBytes(32)
     .slice(0, len);
 
 console.log(randomStr(15)); // 73dce85790345eae6f6baa87981373d7e8c0b31d4730b773855c9dcfadf12b45
+
+// Generate a random string
+const randomString = () => Math.random().toString(36).slice(2);
+
+console.log(randomString()); // 3v5zvd7fr1j
+console.log(randomString()); // aedvlk0se6m
+console.log(randomString()); // sis9t2cpaja
+
+// Convert a string to camelCase
+
+const toCamelCase = (str) => str.trim().replace(/[-_\s]+(.)?/g, (_, c) => (c ? c.toUpperCase() : ''));
+
+console.log(toCamelCase('background-color')); // backgroundColor
+console.log(toCamelCase('-webkit-scrollbar-thumb')); // WebkitScrollbarThumb
+console.log(toCamelCase('_hello_world')); // HelloWorld
+console.log(toCamelCase('hello_world')); // helloWorld

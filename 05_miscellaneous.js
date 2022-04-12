@@ -1,3 +1,5 @@
+'use strict';
+
 // Check if the code is running in Node.js
 const isNode = typeof process !== 'undefined' && process.versions != null && process.versions.node != null;
 
@@ -70,3 +72,9 @@ const randomIp = () => Array(4)
     .join('.');
 
 console.log(randomIp()); // 121.0.67.149
+
+// Clear all cookies
+const clearCookies = () => document.cookie.split(';').forEach((c) => (document.cookie = c.replace(/^ +/, '').replace(/=.*/, `=;expires=${new Date().toUTCString()};path=/`)))
+
+// Detect dark mode
+const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
